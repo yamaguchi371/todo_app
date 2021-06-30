@@ -5,13 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue Todo App</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="./main.css">
 </head>
 <body>
     <div id="app">
+        <label v-for="label in options">
+            <input type="radio"
+                v-model="current"
+                v-bind:value="label.value">{{ label.label }}
+        </label>
+        ({{ computedTodos.length }} 件を表示)
         <table>
             <!-- テーブルヘッダー -->
-            <thead>
+            <thead v-pre>
                 <tr>
                     <th class="id">ID</th>
                     <th class="comment">コメント</th>
@@ -21,20 +27,29 @@
             </thead>
             <tbody>
                 <!-- [1] ここで<tr>でToDoの要素を1行づつ繰り返し表示したい -->
-                    <tr v-for="item in todos" v-bind:key="item.id">
+                    <tr 
+                        v-for="item in computedTodos"
+                        v-bind:key="item.id"
+                        v-bind:class="{done:item.state}">
                         <th>{{item.id}}</th>
                         <th>{{item.comment}}</th>
                         <td class="state">
                             <!-- 状態変化ボタンのモック -->
-                            <button>{{item.state}}</button>
+                            <button v-on:click="doChangeState(item)">
+                                {{ labels[item.state] }}
+                            </button>
                         </td>
                         <td class="button">
                             <!-- 削除ボタンのモック -->
-                            <button>削除</button>
+                            <button v-on:click.ctrl="doRemove(item)">
+                                削除
+                            </button>
                         </td>
                     </tr>
             </tbody>
         </table>
+        <p>※削除キーはctrlキーを押しながらクリックしてください</p>
+
         <h2>新しい作業の追加</h2>
         <form class="add-form" v-on:submit.prevent="doAdd">
             <!-- コメント入力フォーム -->
@@ -42,11 +57,8 @@
             <!-- 追加ボタンのモック -->
             <button type="submit">追加</button>
         </form>
-        <!-- 絞り込みラジオボタン -->
-        <!-- ToDoテーブル -->
-        <!-- 新規登録フォーム -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
-    <script src="main.js"></script>
+    <script src="./main.js"></script>
 </body>
 </html>
