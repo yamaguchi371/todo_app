@@ -1,0 +1,48 @@
+@charset "utf-8";
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 16px;;
+}
+
+.flex-box {
+    display: flex;
+    display: -ms-flex;
+}
+
+.container {
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
+/* 分類ボタン */
+
+.category {
+    margin-top: 8rem;
+    column-gap: 3rem;
+}
+
+label:first-child {
+    background-color: #59b9c6;
+}
+
+label:nth-child(2) {
+    background-color: #84a2d4; 
+}
+
+label:nth-child(3) {
+    background-color: #89c3eb;
+}
