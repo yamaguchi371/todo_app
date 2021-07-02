@@ -15,7 +15,13 @@ html {
 }
 
 body {
-    font-size: 16px;;
+    font-size: 16px;
+    font-family: "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
 }
 
 .flex-box {
@@ -32,7 +38,15 @@ body {
 
 .category {
     margin-top: 8rem;
-    column-gap: 3rem;
+    min-height: 30px;
+    column-gap: 1px;
+    align-items: center;
+}
+
+.category > label {
+    justify-items: center;
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
 }
 
 label:first-child {
@@ -45,4 +59,18 @@ label:nth-child(2) {
 
 label:nth-child(3) {
     background-color: #89c3eb;
+}
+
+/* テーブル */
+table {
+    text-align: left;
+}
+
+
+tr > th {
+    width: 100px;
+}
+
+tr > th:nth-child(2) {
+    min-width: 300px;
 }
